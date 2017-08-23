@@ -20,7 +20,7 @@ import sys
 import struct
 import bluetooth._bluetooth as bluez
 import time
-format = "%Y%m%d %H%M%S"
+format = "%Y/%m/%d-%H:%M:%S"
 
 LE_META_EVENT = 0x3e
 LE_PUBLIC_ADDRESS=0x00
