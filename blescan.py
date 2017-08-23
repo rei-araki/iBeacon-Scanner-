@@ -162,16 +162,15 @@ def parse_events(sock, loop_count=100):
 		    # build the return string
                     Adstring = packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9])
 		    Adstring += ","
-            temp = struct.unpack('b', pkt[report_pkt_offset - 16: report_pkt_offset - 15])[0]
-		    Adstring += "%d" %temp
-		    # Adstring += ","
-		    # Adstring += "%i" % returnnumberpacket(pkt[report_pkt_offset -6: report_pkt_offset - 4])
-		    # Adstring += ","
-		    # Adstring += "%i" % returnnumberpacket(pkt[report_pkt_offset -4: report_pkt_offset - 2])
-		    # Adstring += ","
-		    # Adstring += "%i" % struct.unpack("b", pkt[report_pkt_offset -2])
-		    # Adstring += ","
-		    # Adstring += "%i" % struct.unpack("b", pkt[report_pkt_offset -1])
+		    Adstring += returnstringpacket(pkt[report_pkt_offset -22: report_pkt_offset - 6])
+		    Adstring += ","
+		    Adstring += "%i" % returnnumberpacket(pkt[report_pkt_offset -6: report_pkt_offset - 4])
+		    Adstring += ","
+		    Adstring += "%i" % returnnumberpacket(pkt[report_pkt_offset -4: report_pkt_offset - 2])
+		    Adstring += ","
+		    Adstring += "%i" % struct.unpack("b", pkt[report_pkt_offset -2])
+		    Adstring += ","
+		    Adstring += "%i" % struct.unpack("b", pkt[report_pkt_offset -1])
 
 		    #print "\tAdstring=", Adstring
             if (packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9]) == "20:80:9a:14:8f:24"):
