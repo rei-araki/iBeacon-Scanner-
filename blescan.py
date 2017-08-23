@@ -19,6 +19,8 @@ import os
 import sys
 import struct
 import bluetooth._bluetooth as bluez
+import time
+format = "%Y%m%d %H%M%S"
 
 LE_META_EVENT = 0x3e
 LE_PUBLIC_ADDRESS=0x00
@@ -145,7 +147,7 @@ def parse_events(sock, loop_count=100):
                 num_reports = struct.unpack("B", pkt[0])[0]
                 report_pkt_offset = 0
                 for i in range(0, num_reports):
-		    Adstring = packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9])
+		    Adstring = time.strftime(format, time.localtime())
 		    Adstring += ", "
 		    Adstring += "%i" % (returnnumberpacket(pkt[report_pkt_offset - 16: report_pkt_offset - 15]) / 256)
             if (packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9]) == "20:80:9a:14:8f:24"):
