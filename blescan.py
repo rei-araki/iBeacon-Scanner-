@@ -167,6 +167,7 @@ def parse_events(sock, loop_count=100):
 		    #print "\tAdstring=", Adstring
             if (packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9]) == "20:80:9a:14:8f:24"):
                 myFullList.append(Adstring)
+                print "\tTEMP: ", struct.unpack('b', pkt[report_pkt_offset - 16: report_pkt_offset - 15])[0]
             done = True
     sock.setsockopt( bluez.SOL_HCI, bluez.HCI_FILTER, old_filter )
     return myFullList
