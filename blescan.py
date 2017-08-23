@@ -162,9 +162,6 @@ def parse_events(sock, loop_count=100):
 		    # build the return string
                     Adstring = packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9])
 		    Adstring += ","
-            temp = struct.unpack('b', pkt[report_pkt_offset - 16: report_pkt_offset - 15])[0]
-            Adstring += "%d" %temp
-		    #print "\tAdstring=", Adstring
             if (packed_bdaddr_to_string(pkt[report_pkt_offset + 3:report_pkt_offset + 9]) == "20:80:9a:14:8f:24"):
                 myFullList.append(Adstring)
                 print "TEMP: ", struct.unpack('b', pkt[report_pkt_offset - 16: report_pkt_offset - 15])[0]
